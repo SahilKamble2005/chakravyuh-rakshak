@@ -1,0 +1,60 @@
+{
+  "model_version": "v2.1.0",
+  "trained_at": "2026-09-25T12:11:28.104650",
+  "training_samples": 10000,
+  "feature_names": [
+    "sea_surface_temp",
+    "wind_shear",
+    "cloud_top_temp",
+    "rainfall",
+    "humidity",
+    "ocean_heat_content",
+    "latitude",
+    "longitude",
+    "central_pressure",
+    "prev_intensity"
+  ],
+  "categories": [
+    "NO_SYSTEM",
+    "DISTURBANCE",
+    "TD",
+    "TS",
+    "CAT1",
+    "CAT2",
+    "CAT3",
+    "CAT4",
+    "CAT5"
+  ],
+  "patterns": [
+    "NO_ORGANIZED_SYSTEM",
+    "LOW_PRESSURE_AREA",
+    "TROPICAL_DISTURBANCE",
+    "SHEAR_PATTERN",
+    "CURVED_BAND",
+    "SPIRAL_BAND_ORGANIZED",
+    "CENTRAL_DENSE_OVERCAST",
+    "EYE_FORMING",
+    "EYE_FORMED",
+    "ANNULAR_HURRICANE"
+  ],
+  "risk_levels": {
+    "LOW": {
+      "min": 0.0,
+      "max": 0.25
+    },
+    "MODERATE": {
+      "min": 0.25,
+      "max": 0.5
+    },
+    "HIGH": {
+      "min": 0.5,
+      "max": 0.75
+    },
+    "CRITICAL": {
+      "min": 0.75,
+      "max": 1.0
+    }
+  },
+  "framework": "xgboost+sklearn",
+  "note": "DEMO MODE \u2014 trained on synthetic data. Replace with real IBTrACS/ERA5 data for production."
+}

@@ -1,0 +1,50 @@
+version: "3.9"
+
+# ============================================================
+# Chakravyuh Rakshak — Docker Compose
+# ============================================================
+# PostgreSQL + PostGIS  (primary database — single source of truth)
+# Redis                 (cache / pub-sub / queue — NOT a database)
+# ============================================================
+
+services:
+  # ── PostgreSQL + PostGIS ──────────────────────────────────
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: chakravyuh-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: chakravyuh
+      POSTGRES_PASSWORD: chakravyuh
+      POSTGRES_DB: chakravyuh_rakshak
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chakravyuh -d chakravyuh_rakshak"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Redis (cache / pub-sub / queue ONLY) ──────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: chakravyuh-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

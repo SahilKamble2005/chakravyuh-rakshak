@@ -1,0 +1,70 @@
+# Chakravyuh Rakshak
+
+## Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+## Environment
+.env
+.env.local
+.env.production
+
+## Archives
+*.zip
+*.tar.gz
+*.rar
+
+## IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+
+## Backend
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+
+## Blockchain
+blockchain/node_modules/
+blockchain/cache/
+blockchain/artifacts/
+blockchain/coverage/
+blockchain/typechain-types/
+
+## Data files
+*.tif
+*.tiff
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+
+## Logs
+*.log
+logs/
+
+## Model files (large)
+model/trained_model/*.pkl
+model/trained_model/*.h5
+model/trained_model/*.pt
+model/trained_model/*.onnx
